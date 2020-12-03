@@ -5,8 +5,6 @@ RUN mkdir -p /home/node/app && chown -R node:node /home/node/app
 # Create app directory
 WORKDIR /home/node/app
 
-RUN chown -R node:node /usr/src/app
-
 USER node
 
 # Install app dependencies
