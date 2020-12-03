@@ -1,11 +1,12 @@
 FROM ppc64le/node:12-buster 
 
-USER node
 
 # Create app directory
 WORKDIR /usr/src/app
 
 RUN chown -R node:node /usr/src/app
+
+USER node
 
 # Install app dependencies
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
