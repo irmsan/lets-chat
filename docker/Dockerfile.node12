@@ -2,7 +2,7 @@ FROM ppc64le/node:12-buster
 
 RUN mkdir -p /home/node/app && chown -R node:node /home/node/app
 
-RUN mkdir -p /home/node/app/builtAssets && chown -R node:node /home/node/app
+RUN mkdir -p /home/node/app/builtAssets && chmod 777 /home/node/app/builtAssets
 # Create app directory
 WORKDIR /home/node/app
 
