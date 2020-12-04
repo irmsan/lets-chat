@@ -1,4 +1,4 @@
-FROM s390x/node:12
+FROM s390x/node:latest
 MAINTAINER irmsan
 
 RUN set -x \
