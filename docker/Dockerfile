@@ -11,12 +11,13 @@ USER node
 # Install app dependencies
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
 # where available (npm@5+)
-COPY --chown=node:node ../package*.json ./
-
+# COPY --chown=node:node ../package*.json ./
+COPY --chown=node:node package*.json ./
 RUN npm install
 
 # Bundle app source
-COPY --chown=node:node ../ .
+# COPY --chown=node:node ../ .
+COPY --chown=node:node . .
 
 EXPOSE 8080
 CMD [ "npm", "start" ]
