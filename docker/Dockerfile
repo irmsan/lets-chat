@@ -1,4 +1,4 @@
-FROM s390x/node:12-buster 
+FROM s390x/node:12
 MAINTAINER irmsan
 
 RUN set -x \
