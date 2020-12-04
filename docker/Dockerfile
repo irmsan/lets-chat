@@ -1,10 +1,4 @@
-FROM s390x/node:latest
-MAINTAINER irmsan
-
-RUN set -x \
-&&  apt-get update \
-&&  apt-get install -y libica-utils --no-install-recommends \
-&&  apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false -o APT::AutoRemove::SuggestsImportant=false $BUILD_DEPS
+FROM s390x/node:12-buster 
 
 RUN mkdir -p /home/node/app && chown -R node:node /home/node/app
 
