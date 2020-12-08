@@ -1,8 +1,12 @@
 FROM s390x/node:12-buster 
-ENV DATABASE_NAME=minta
-ENV DATABASE_USERNAME=jelszo
-ENV DATABASE_PASSWORD=felhasznalo
 
+ENV BUILD_DEPS='libica-utils'
+
+RUN set -x \
+&&  apt-get update \
+&&  apt-get install -y $BUILD_DEPS --no-install-recommends \
+&&  rm -rf /var/lib/apt/lists/* \
+&&  apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false -o APT::AutoRemove::SuggestsImportant=false $BUILD_DEPS
 
 RUN mkdir -p /home/node/app && chown -R node:node /home/node/app
 
