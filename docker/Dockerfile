@@ -8,6 +8,10 @@ RUN set -x \
 &&  rm -rf /var/lib/apt/lists/* \
 &&  apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false -o APT::AutoRemove::SuggestsImportant=false
 
+RUN set -x \
+&&  tee -a /etc/ssl/openssl.cnf < /usr/share/doc/openssl-ibmca/examples/openssl.cnf.sample\
+&&  sed -i -r 's/openssl_conf = default_conf/openssl_conf = openssl_def/' /etc/ssl/openssl.cnf
+
 RUN mkdir -p /home/node/app && chown -R node:node /home/node/app
 
 RUN mkdir -p /home/node/app/builtAssets && chmod 777 /home/node/app/builtAssets
