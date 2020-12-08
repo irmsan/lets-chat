@@ -1,4 +1,8 @@
 FROM s390x/node:12-buster 
+ENV DATABASE_NAME=minta
+ENV DATABASE_USERNAME=jelszo
+ENV DATABASE_PASSWORD=felhasznalo
+
 
 RUN mkdir -p /home/node/app && chown -R node:node /home/node/app
 
