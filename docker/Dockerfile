@@ -6,7 +6,7 @@ RUN set -x \
 &&  apt-get update \
 &&  apt-get install -y $BUILD_DEPS --no-install-recommends \
 &&  rm -rf /var/lib/apt/lists/* \
-&&  apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false -o APT::AutoRemove::SuggestsImportant=false $BUILD_DEPS
+&&  apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false -o APT::AutoRemove::SuggestsImportant=false
 
 RUN mkdir -p /home/node/app && chown -R node:node /home/node/app
 
