@@ -1,5 +1,5 @@
 FROM registry.redhat.io/ubi8/nodejs-12
-USER node
+USER 0
 
 # ENV BUILD_DEPS='libica-utils openssl libssl-dev openssl-ibmca'
 
