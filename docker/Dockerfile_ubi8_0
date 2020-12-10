@@ -13,24 +13,24 @@ USER 0
 # &&  tee -a /etc/ssl/openssl.cnf < /usr/share/doc/openssl-ibmca/examples/openssl.cnf.sample\
 # &&  sed -i -r 's/openssl_conf = default_conf/openssl_conf = openssl_def/' /etc/ssl/openssl.cnf
 
-RUN mkdir -p /home/node/app && chown -R node:node /home/node/app
+RUN mkdir -p /home/0/app && chown -R 0:0 /home/0/app
 
-RUN mkdir -p /home/node/app/builtAssets && chmod 777 /home/node/app/builtAssets
+RUN mkdir -p /home/0/app/builtAssets && chmod 777 /home/0/app/builtAssets
 # Create app directory
-WORKDIR /home/node/app
+WORKDIR /home/0/app
 
 
 
 # Install app dependencies
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
 # where available (npm@5+)
-# COPY --chown=node:node ../package*.json ./
-COPY --chown=node:node package*.json ./
+# COPY --chown=0:0 ../package*.json ./
+COPY --chown=0:0 package*.json ./
 RUN npm install
 
 # Bundle app source
-# COPY --chown=node:node ../ .
-COPY --chown=node:node . .
+# COPY --chown=0:0 ../ .
+COPY --chown=0:0 . .
 
 EXPOSE 8080
 CMD [ "npm", "start" ]
