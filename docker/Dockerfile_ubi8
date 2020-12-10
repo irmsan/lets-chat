@@ -1,4 +1,4 @@
-FROM s390x/ubi8/nodejs-12
+FROM registry.redhat.io/ubi8/nodejs-12
 
 # ENV BUILD_DEPS='libica-utils openssl libssl-dev openssl-ibmca'
 
