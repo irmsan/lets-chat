@@ -1,1 +1,35 @@
-FROM ubi8/nodejs-12
+FROM s390x/ubi8/nodejs-12
+
+# ENV BUILD_DEPS='libica-utils openssl libssl-dev openssl-ibmca'
+
+# RUN set -x \
+# &&  apt-get update \
+# &&  apt-get install -y $BUILD_DEPS --no-install-recommends \
+# &&  rm -rf /var/lib/apt/lists/* \
+# &&  apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false -o APT::AutoRemove::SuggestsImportant=false
+
+# RUN set -x \
+# &&  tee -a /etc/ssl/openssl.cnf < /usr/share/doc/openssl-ibmca/examples/openssl.cnf.sample\
+# &&  sed -i -r 's/openssl_conf = default_conf/openssl_conf = openssl_def/' /etc/ssl/openssl.cnf
+
+RUN mkdir -p /home/node/app && chown -R node:node /home/node/app
+
+RUN mkdir -p /home/node/app/builtAssets && chmod 777 /home/node/app/builtAssets
+# Create app directory
+WORKDIR /home/node/app
+
+USER node
+
+# Install app dependencies
+# A wildcard is used to ensure both package.json AND package-lock.json are copied
+# where available (npm@5+)
+# COPY --chown=node:node ../package*.json ./
+COPY --chown=node:node package*.json ./
+RUN npm install
+
+# Bundle app source
+# COPY --chown=node:node ../ .
+COPY --chown=node:node . .
+
+EXPOSE 8080
+CMD [ "npm", "start" ]
