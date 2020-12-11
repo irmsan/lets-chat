@@ -4,8 +4,8 @@ USER 0
 ENV BUILD_DEPS='libica-utils openssl libssl-dev openssl-ibmca'
 
 RUN set -x \
-&&  yum update \
-&&  yum install -y $BUILD_DEPS --no-install-recommends \
+&&  yum update -y\
+&&  yum install -y $BUILD_DEPS  \
 # &&  rm -rf /var/lib/apt/lists/* \
 # &&  apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false -o APT::AutoRemove::SuggestsImportant=false
 
