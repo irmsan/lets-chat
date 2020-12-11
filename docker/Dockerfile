@@ -1,6 +1,6 @@
 FROM s390x/node:12-buster 
 
-ENV BUILD_DEPS='libica-utils openssl libssl-dev openssl-ibmca'
+ENV BUILD_DEPS='libica-utils openssl libssl-dev openssl-ibmca time'
 
 RUN set -x \
 &&  apt-get update \
