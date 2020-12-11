@@ -1,7 +1,15 @@
 FROM registry.redhat.io/ubi8/nodejs-12
 USER 0
 
-# ENV BUILD_DEPS='libica-utils openssl libssl-dev openssl-ibmca'
+ENV BUILD_DEPS='libica-utils openssl libssl-dev openssl-ibmca'
+
+RUN set -x \
+&&  yum update \
+&&  yum install -y $BUILD_DEPS --no-install-recommends \
+# &&  rm -rf /var/lib/apt/lists/* \
+# &&  apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false -o APT::AutoRemove::SuggestsImportant=false
+
+
 
 # RUN set -x \
 # &&  apt-get update \
